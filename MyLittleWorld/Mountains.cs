@@ -1,0 +1,43 @@
+﻿using System;
+using System.Drawing;
+
+namespace MyLittleWorld
+{
+    public class Mountains : AbstractRadialObject
+    {
+        public Mountains(Point position, Point planetCenter, int planetRadius)
+            : base(position, planetCenter, planetRadius) {
+            ValidatePosition();
+        }
+
+        public override void Draw(Graphics g)
+        {
+            float angle = GetAngle();
+            float width = 40;
+            float height = 20;
+
+            // Mountain peaks
+            PointF[] mountains = new PointF[5];
+            mountains[0] = new PointF(Position.X - width / 2, Position.Y);
+            mountains[1] = new PointF(Position.X - width / 4, Position.Y - height);
+            mountains[2] = new PointF(Position.X, Position.Y - height * 0.8f);
+            mountains[3] = new PointF(Position.X + width / 4, Position.Y - height * 2);
+            mountains[4] = new PointF(Position.X + width / 2, Position.Y);
+
+            RotatePoints(mountains, angle);
+
+            // Draw
+            using (SolidBrush brush = new SolidBrush(Color.DarkSlateGray))
+            {
+                using (var gradientBrush = new System.Drawing.Drawing2D.LinearGradientBrush(
+                    mountains[0], // Начальная точка градиента
+                    mountains[4], // Конечная точка градиента
+                    Color.Black,           // Начальный цвет
+                    Color.Gray))         // Конечный цвет
+                {
+                    g.FillPolygon(gradientBrush, mountains);
+                }
+            }
+        }
+    }
+}
