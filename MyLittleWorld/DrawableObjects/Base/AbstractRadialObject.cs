@@ -3,13 +3,12 @@ using System.Drawing;
 
 namespace MyLittleWorld
 {
-    public abstract class AbstractRadialObject : IDrawable
+    public abstract class AbstractRadialObject
     {
-        protected Point Position { get; }
-        protected Point PlanetCenter { get; }
-        protected int PlanetRadius { get; }
-
-        public AbstractRadialObject(Point position, Point planetCenter, int planetRadius)
+        public PointF Position { get; set; }
+        public Point PlanetCenter { get; }
+        public int PlanetRadius { get; set; }
+        public AbstractRadialObject(PointF position, Point planetCenter, int planetRadius)
         {
             Position = position;
             PlanetCenter = planetCenter;
@@ -26,14 +25,7 @@ namespace MyLittleWorld
             return (float)Math.Atan2(dy, dx) + (float)Math.PI;
         }
 
-        protected void RotatePoints(PointF[] points, float angle)
-        {
-            float rotationAngle = angle - (float)Math.PI / 2;
-            for (int i = 0; i < points.Length; i++)
-            {
-                points[i] = PointUtils.RotatePointAround(Position, points[i], rotationAngle);
-            }
-        }
+  
         protected void ValidatePosition()
         {
             double distance = Math.Sqrt(Math.Pow(Position.X - PlanetCenter.X, 2) +
@@ -44,5 +36,15 @@ namespace MyLittleWorld
                 throw new ArgumentException("Object must be placed on planet surface");
             }
         }
+
+        public bool IsPointOnObject(PointF point)
+        {
+            float distance = (float)Math.Sqrt(
+                Math.Pow(point.X - Position.X, 2) +
+                Math.Pow(point.Y - Position.Y, 2));
+
+            return distance < 30;
+        }
+
     }
 }

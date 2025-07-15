@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace MyLittleWorld
 {
     public class Fir : AbstractRadialObject
     {
-        public Fir(Point position, Point planetCenter, int planetRadius)
+        public Fir(PointF position, Point planetCenter, int planetRadius)
             : base(position, planetCenter, planetRadius)
         {
             ValidatePosition();
@@ -18,12 +22,12 @@ namespace MyLittleWorld
             float width = 30;  // Ширина основания ели
             float height = 80; // Общая высота ели
 
-            // 1. Создаем ярусы ели (3 треугольника)
+            // Создаем ярусы ели 
             PointF[] bottomTier = CreateTier(Position, width * 0.9f, height * 0.4f, 6);
             PointF[] middleTier = CreateTier(Position, width * 0.7f, height * 0.3f, height * 0.35f);
             PointF[] topTier = CreateTier(Position, width * 0.4f, height * 0.3f, height * 0.6f);
 
-            // 2. Ствол (узкий прямоугольник)
+            // Ствол 
             float trunkWidth = width * 0.1f;
             PointF[] trunk = new PointF[]
             {
@@ -36,10 +40,10 @@ namespace MyLittleWorld
            
 
             // Поворачиваем все элементы
-            RotatePoints(bottomTier, angle);
-            RotatePoints(middleTier, angle);
-            RotatePoints(topTier, angle);
-            RotatePoints(trunk, angle);
+            PointUtils.RotatePoints(Position, bottomTier, angle);
+            PointUtils.RotatePoints(Position, middleTier, angle);
+            PointUtils.RotatePoints(Position, topTier, angle);
+            PointUtils.RotatePoints(Position, trunk, angle);
 
             // Рисуем в правильном порядке
             DrawTrunk(g, trunk);
@@ -89,11 +93,7 @@ namespace MyLittleWorld
             {
                 g.FillPolygon(brush, trunk);
             }
-
-          
-            
         }
 
-       
     }
 }

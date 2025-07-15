@@ -5,7 +5,7 @@ namespace MyLittleWorld
 {
     public class Mountains : AbstractRadialObject
     {
-        public Mountains(Point position, Point planetCenter, int planetRadius)
+        public Mountains(PointF position, Point planetCenter, int planetRadius)
             : base(position, planetCenter, planetRadius) {
             ValidatePosition();
         }
@@ -14,9 +14,8 @@ namespace MyLittleWorld
         {
             float angle = GetAngle();
             float width = 40;
-            float height = 20;
+            float height = 40;
 
-            // Mountain peaks
             PointF[] mountains = new PointF[5];
             mountains[0] = new PointF(Position.X - width / 2, Position.Y);
             mountains[1] = new PointF(Position.X - width / 4, Position.Y - height);
@@ -24,9 +23,8 @@ namespace MyLittleWorld
             mountains[3] = new PointF(Position.X + width / 4, Position.Y - height * 2);
             mountains[4] = new PointF(Position.X + width / 2, Position.Y);
 
-            RotatePoints(mountains, angle);
+            PointUtils.RotatePoints(Position, mountains, angle);
 
-            // Draw
             using (SolidBrush brush = new SolidBrush(Color.DarkSlateGray))
             {
                 using (var gradientBrush = new System.Drawing.Drawing2D.LinearGradientBrush(

@@ -6,7 +6,7 @@ namespace MyLittleWorld
 {
     public class Obelisk : AbstractRadialObject
     {
-        public Obelisk(Point position, Point planetCenter, int planetRadius)
+        public Obelisk(PointF position, Point planetCenter, int planetRadius)
             : base(position, planetCenter, planetRadius)
         {
             ValidatePosition();
@@ -14,6 +14,8 @@ namespace MyLittleWorld
 
         public override void Draw(Graphics g)
         {
+
+
             float angle = GetAngle();
             float width = 15;
             float height = 45;
@@ -22,9 +24,9 @@ namespace MyLittleWorld
             float baseHeight = height * 0.2f;
             float pillarHeight = height * 0.6f;
             float pyramidHeight = height * 0.2f;
-            float rayLength = pyramidHeight * 0.8f; // Уменьшенная длина лучей
+            float rayLength = pyramidHeight * 0.8f; 
 
-            // 1. Основание
+            // Основание
             PointF[] basePoints = new PointF[]
             {
                 new PointF(Position.X - width/2, Position.Y),
@@ -33,7 +35,7 @@ namespace MyLittleWorld
                 new PointF(Position.X + width/2, Position.Y)
             };
 
-            // 2. Колонна
+            // Колонна
             float pillarTopWidth = width * 0.6f;
             PointF[] pillarPoints = new PointF[]
             {
@@ -43,7 +45,7 @@ namespace MyLittleWorld
                 new PointF(Position.X - width/3, Position.Y - baseHeight)
             };
 
-            // 3. Пирамида с лучами
+            // Пирамида с лучами
 
             PointF[] pyramid = new PointF[]
             {
@@ -52,7 +54,7 @@ namespace MyLittleWorld
                 new PointF(Position.X,  Position.Y - baseHeight - pillarHeight - pyramidHeight)
         };
 
-            // 4. Лучи (12 лучей с меньшей длиной)
+            // Лучи (12 лучей)
             PointF[] rayEnds = new PointF[12];
             for (int i = 0; i < 12; i++)
             {
@@ -63,10 +65,10 @@ namespace MyLittleWorld
             }
 
             // Поворот всех элементов
-            RotatePoints(basePoints, angle);
-            RotatePoints(pillarPoints, angle);
-            RotatePoints(pyramid, angle);
-            RotatePoints(rayEnds, angle);
+            PointUtils.RotatePoints(Position, basePoints, angle);
+            PointUtils.RotatePoints(Position, pillarPoints, angle);
+            PointUtils.RotatePoints(Position, pyramid, angle);
+            PointUtils.RotatePoints(Position, rayEnds, angle);
 
             // Отрисовка
             DrawBase(g, basePoints);
@@ -112,7 +114,7 @@ namespace MyLittleWorld
 
         private void DrawPyramidWithRays(Graphics g, PointF[] pyramid, PointF[] rayEnds)
         {
-            // Рисуем лучи (тонкие золотые линии)
+            // Рисуем лучи 
             using (Pen rayPen = new Pen(Color.Gold, 1.5f))
             {
                 foreach (PointF rayEnd in rayEnds)

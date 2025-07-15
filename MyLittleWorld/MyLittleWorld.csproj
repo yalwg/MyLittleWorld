@@ -46,25 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractRadialObject.cs" />
-    <Compile Include="DrawableObjectsStaticFactory.cs" />
-    <Compile Include="Fir.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="DrawableObjects\Base\AbstractRadialObject.cs" />
+    <Compile Include="Factories\DrawableObjectsStaticFactory.cs" />
+    <Compile Include="DrawableObjects\Objects\Fir.cs" />
+    <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="House.cs" />
-    <Compile Include="IDrawable.cs" />
-    <Compile Include="Mountains.cs" />
-    <Compile Include="Obelisk.cs" />
-    <Compile Include="Planet.cs" />
-    <Compile Include="PointUtils.cs" />
+    <Compile Include="DrawableObjects\Objects\House.cs" />
+    <Compile Include="DrawableObjects\Objects\Mountains.cs" />
+    <Compile Include="DrawableObjects\Objects\Obelisk.cs" />
+    <Compile Include="DrawableObjects\Planet.cs" />
+    <Compile Include="Help\PointUtils.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SoundManager.cs" />
-    <EmbeddedResource Include="Form1.resx">
+    <Compile Include="Sound\SoundManager.cs" />
+    <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -85,6 +84,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="Resources\texture_1.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -96,5 +96,6 @@
     <Content Include="Resources\t.wav" />
     <Content Include="Resources\texture_2.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

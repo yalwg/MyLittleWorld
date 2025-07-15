@@ -5,7 +5,7 @@ namespace MyLittleWorld
 {
     public static class DrawableObjectsStaticFactory
     {
-        public static IDrawable CreateObject(Type objectType, Point position, Point planetCenter, int planetRadius)
+        public static AbstractRadialObject CreateObject(Type objectType, PointF position, Point planetCenter, int planetRadius)
         {
             if (objectType == typeof(House))
                 return new House(position, planetCenter, planetRadius);

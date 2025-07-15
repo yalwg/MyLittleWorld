@@ -6,7 +6,7 @@ namespace MyLittleWorld
 {
     public class House : AbstractRadialObject
     {
-        public House(Point position, Point planetCenter, int planetRadius)
+        public House(PointF position, Point planetCenter, int planetRadius)
             : base(position, planetCenter, planetRadius)
         {
             ValidatePosition();
@@ -16,9 +16,8 @@ namespace MyLittleWorld
         {
             float angle = GetAngle();
             float width = 25;
-            float height = 20;
+            float height = 23;
 
-            // 1. Основная часть дома (прямоугольник)
             PointF[] foundation = new PointF[]
             {
                 new PointF(Position.X - width/2, Position.Y),
@@ -27,7 +26,6 @@ namespace MyLittleWorld
                 new PointF(Position.X + width/2, Position.Y)
             };
 
-            // 2. Крыша (треугольник)
             float roofHeight = height * 0.5f;
             PointF[] roof = new PointF[]
             {
@@ -36,7 +34,6 @@ namespace MyLittleWorld
                 new PointF(Position.X, Position.Y - height - roofHeight)
             };
 
-            // 3. Дверь
             float doorWidth = width * 0.3f;
             float doorHeight = height * 0.4f;
             PointF[] door = new PointF[]
@@ -47,7 +44,6 @@ namespace MyLittleWorld
                 new PointF(Position.X + doorWidth/2, Position.Y)
             };
 
-            // 4. Окно
             float windowSize = width * 0.25f;
             PointF[] window = new PointF[]
             {
@@ -58,10 +54,10 @@ namespace MyLittleWorld
             };
 
             // Поворачиваем все элементы
-            RotatePoints(foundation, angle);
-            RotatePoints(roof, angle);
-            RotatePoints(door, angle);
-            RotatePoints(window, angle);
+            PointUtils.RotatePoints(Position, foundation, angle);
+            PointUtils.RotatePoints(Position, roof, angle);
+            PointUtils.RotatePoints(Position, door, angle);
+            PointUtils.RotatePoints(Position, window, angle);
 
             // Рисуем дом
             DrawFoundation(g, foundation);
@@ -117,13 +113,12 @@ namespace MyLittleWorld
         private void DrawWindow(Graphics g, PointF[] windowFrame)
         {
             float angle = GetAngle();
-            // 1. Рисуем внешнюю раму окна
+
             using (SolidBrush frameBrush = new SolidBrush(Color.White))
             {
                 g.FillPolygon(frameBrush, windowFrame);
             }
 
-            // 2. Создаем точки для стекла (внутренняя часть окна)
             float glassMargin = (windowFrame[1].X - windowFrame[0].X) * 0.1f; // 10% отступа
             PointF[] glass = new PointF[]
             {
@@ -133,7 +128,6 @@ namespace MyLittleWorld
                 new PointF(windowFrame[3].X - glassMargin, windowFrame[3].Y + glassMargin)
             };
 
-            // 3. Рисуем стекло с градиентом
             using (PathGradientBrush glassBrush = new PathGradientBrush(glass))
             {
                 glassBrush.CenterColor = Color.LightSkyBlue;
@@ -143,7 +137,6 @@ namespace MyLittleWorld
 
            
 
-            // 5. Контур окна
             using (Pen pen = new Pen(Color.DarkBlue, 2))
             {
                 g.DrawPolygon(pen, windowFrame);
