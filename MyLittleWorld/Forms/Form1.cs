@@ -17,7 +17,10 @@ namespace MyLittleWorld
         private Type currentObjectType = typeof(House);
 
         private Dictionary<Type, int> objectCounts = new Dictionary<Type, int>();
-        private Color skyColor = Color.LightBlue;
+
+        private Color skyColor1 = Color.LightBlue;
+        private Color skyColor2 = Color.White;
+
         private Rectangle skyRect;
         private Timer timerRotation;
         private float planetRotationAngle = 0;
@@ -36,9 +39,15 @@ namespace MyLittleWorld
         private void InitializeApplication()
         {
             timerRotation = new Timer();
-            timerRotation.Interval = 16; // ~60 FPS
+            timerRotation.Interval = 16; 
             timerRotation.Tick += timerRotation_Tick;
-            buttonDeleteMode.Click += buttonDeleteMode_Click;
+
+            btnColor1.ForeColor = Color.FromArgb(255 - skyColor1.R, 255 - skyColor1.G, 255 - skyColor1.B);
+            btnColor1.BackColor = skyColor1;
+
+            btnColor2.BackColor = skyColor2;
+            btnColor2.ForeColor = Color.FromArgb(255 - skyColor2.R, 255 - skyColor2.G, 255 - skyColor2.B);
+
             try
             {
                 string texturePath = Path.Combine("C:\\Users\\User\\source\\repos\\MyLittleWorld\\MyLittleWorld\\Resources\\texture_2.png");
@@ -145,7 +154,7 @@ namespace MyLittleWorld
 
             if (radioButton1.Checked) // Если выбран паттерн
             {
-                skyBrush = CreateHatchSkyBrush(skyColor, Color.AliceBlue);
+                skyBrush = CreateHatchSkyBrush(skyColor1, skyColor2);
             }
             else // Если выбрано изображение
             {
@@ -266,12 +275,26 @@ namespace MyLittleWorld
             ColorDialog colorDialog = new ColorDialog();
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
-                skyColor = colorDialog.Color;
+                skyColor1 = colorDialog.Color;
+                btnColor1.BackColor = skyColor1;
+                btnColor1.ForeColor = Color.FromArgb(255 - skyColor1.R, 255 - skyColor1.G, 255 - skyColor1.B);
                 pictureBox.Invalidate();
             }
         }
 
-       
+        private void btnColor2_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                skyColor2 = colorDialog.Color;
+                btnColor2.BackColor = skyColor2;
+                btnColor2.ForeColor = Color.FromArgb(255 - skyColor2.R, 255 - skyColor2.G, 255 - skyColor2.B);
+                pictureBox.Invalidate();
+            }
+        }
+
+
 
         private void btnClear_Click(object sender, EventArgs e)
         {
@@ -332,13 +355,13 @@ namespace MyLittleWorld
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            btnColor.Enabled = true;
+            boxSkyColor.Enabled = true;
             pictureBox.Invalidate();
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            btnColor.Enabled = false;
+            boxSkyColor.Enabled = false;
             pictureBox.Invalidate();
         }
 
@@ -348,7 +371,7 @@ namespace MyLittleWorld
             isDeleteMode = true;
             buttonBuildMode.BackColor = Color.LightGray;
             buttonDeleteMode.BackColor = Color.IndianRed;
-            groupBox1.Enabled = false;
+            boxBuildMode.Enabled = false;
             pictureBox.Cursor = Cursors.No;
         }
 
@@ -358,7 +381,7 @@ namespace MyLittleWorld
             buttonBuildMode.BackColor = Color.LightGreen;
             buttonDeleteMode.BackColor = Color.LightGray;
             pictureBox.Cursor = Cursors.Hand;
-            groupBox1.Enabled = true;
+            boxBuildMode.Enabled = true;
             if (radioHouse.Checked)
             {
                 currentObjectType = typeof(House);
@@ -380,5 +403,7 @@ namespace MyLittleWorld
                 SetPictureBoxCursor("C:\\Users\\User\\source\\repos\\MyLittleWorld\\MyLittleWorld\\Resources\\cur4.cur");
             }
         }
+
+        
     }
 }
