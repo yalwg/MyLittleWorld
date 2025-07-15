@@ -20,7 +20,7 @@ namespace MyLittleWorld
 
         private void InitializeComponent()
         {
-            this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.planetSystemPictureBox = new System.Windows.Forms.PictureBox();
             this.boxBuildMode = new System.Windows.Forms.GroupBox();
             this.radioMountains = new System.Windows.Forms.RadioButton();
             this.radioObelisk = new System.Windows.Forms.RadioButton();
@@ -33,28 +33,28 @@ namespace MyLittleWorld
             this.lblHouseCount = new System.Windows.Forms.Label();
             this.btnColor1 = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.trackBarRadius = new System.Windows.Forms.TrackBar();
+            this.lblMinRadius = new System.Windows.Forms.Label();
+            this.lblMaxRadius = new System.Windows.Forms.Label();
             this.btnStartRotation = new System.Windows.Forms.Button();
             this.btnStopRotation = new System.Windows.Forms.Button();
             this.trackBarSpeed = new System.Windows.Forms.TrackBar();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblMinSpeed = new System.Windows.Forms.Label();
+            this.lblMaxSpeed = new System.Windows.Forms.Label();
             this.boxSkyBrush = new System.Windows.Forms.GroupBox();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.label7 = new System.Windows.Forms.Label();
-            this.buttonDeleteMode = new System.Windows.Forms.Button();
-            this.buttonBuildMode = new System.Windows.Forms.Button();
+            this.radioCustomBrush = new System.Windows.Forms.RadioButton();
+            this.radioHatchBrush = new System.Windows.Forms.RadioButton();
+            this.lblNullSpeed = new System.Windows.Forms.Label();
+            this.btnDeleteMode = new System.Windows.Forms.Button();
+            this.btnBuildMode = new System.Windows.Forms.Button();
             this.btnColor2 = new System.Windows.Forms.Button();
             this.boxSpeedControl = new System.Windows.Forms.GroupBox();
             this.boxRadiusControl = new System.Windows.Forms.GroupBox();
             this.boxSkyColor = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.planetSystemPictureBox)).BeginInit();
             this.boxBuildMode.SuspendLayout();
             this.boxBuildObjects.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarRadius)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).BeginInit();
             this.boxSkyBrush.SuspendLayout();
             this.boxSpeedControl.SuspendLayout();
@@ -62,20 +62,20 @@ namespace MyLittleWorld
             this.boxSkyColor.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pictureBox
+            // planetSystemPictureBox
             // 
-            this.pictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.planetSystemPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox.Location = new System.Drawing.Point(14, 13);
-            this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(741, 675);
-            this.pictureBox.TabIndex = 0;
-            this.pictureBox.TabStop = false;
-            this.pictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
-            this.pictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseClick);
+            this.planetSystemPictureBox.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.planetSystemPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.planetSystemPictureBox.Location = new System.Drawing.Point(14, 13);
+            this.planetSystemPictureBox.Name = "planetSystemPictureBox";
+            this.planetSystemPictureBox.Size = new System.Drawing.Size(741, 675);
+            this.planetSystemPictureBox.TabIndex = 0;
+            this.planetSystemPictureBox.TabStop = false;
+            this.planetSystemPictureBox.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox_Paint);
+            this.planetSystemPictureBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseClick);
             // 
             // boxBuildMode
             // 
@@ -203,45 +203,45 @@ namespace MyLittleWorld
             // btnClear
             // 
             this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClear.Location = new System.Drawing.Point(967, 266);
+            this.btnClear.Location = new System.Drawing.Point(967, 322);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(183, 40);
+            this.btnClear.Size = new System.Drawing.Size(183, 124);
             this.btnClear.TabIndex = 4;
             this.btnClear.Text = "Очистить все";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
-            // trackBar1
+            // trackBarRadius
             // 
-            this.trackBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBar1.Location = new System.Drawing.Point(6, 21);
-            this.trackBar1.Maximum = 250;
-            this.trackBar1.Minimum = 10;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(377, 56);
-            this.trackBar1.TabIndex = 0;
-            this.trackBar1.Value = 157;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            this.trackBarRadius.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.trackBarRadius.Location = new System.Drawing.Point(6, 21);
+            this.trackBarRadius.Maximum = 250;
+            this.trackBarRadius.Minimum = 10;
+            this.trackBarRadius.Name = "trackBarRadius";
+            this.trackBarRadius.Size = new System.Drawing.Size(377, 56);
+            this.trackBarRadius.TabIndex = 0;
+            this.trackBarRadius.Value = 157;
+            this.trackBarRadius.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
-            // label1
+            // lblMinRadius
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 80);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(21, 16);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "10";
+            this.lblMinRadius.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMinRadius.AutoSize = true;
+            this.lblMinRadius.Location = new System.Drawing.Point(4, 80);
+            this.lblMinRadius.Name = "lblMinRadius";
+            this.lblMinRadius.Size = new System.Drawing.Size(21, 16);
+            this.lblMinRadius.TabIndex = 7;
+            this.lblMinRadius.Text = "10";
             // 
-            // label2
+            // lblMaxRadius
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(355, 80);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 16);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "250";
+            this.lblMaxRadius.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMaxRadius.AutoSize = true;
+            this.lblMaxRadius.Location = new System.Drawing.Point(355, 80);
+            this.lblMaxRadius.Name = "lblMaxRadius";
+            this.lblMaxRadius.Size = new System.Drawing.Size(28, 16);
+            this.lblMaxRadius.TabIndex = 8;
+            this.lblMaxRadius.Text = "250";
             // 
             // btnStartRotation
             // 
@@ -277,31 +277,31 @@ namespace MyLittleWorld
             this.trackBarSpeed.Value = 10;
             this.trackBarSpeed.Scroll += new System.EventHandler(this.trackBarSpeed_Scroll);
             // 
-            // label4
+            // lblMinSpeed
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 80);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 16);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "100 (влево)";
+            this.lblMinSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMinSpeed.AutoSize = true;
+            this.lblMinSpeed.Location = new System.Drawing.Point(12, 80);
+            this.lblMinSpeed.Name = "lblMinSpeed";
+            this.lblMinSpeed.Size = new System.Drawing.Size(79, 16);
+            this.lblMinSpeed.TabIndex = 13;
+            this.lblMinSpeed.Text = "100 (влево)";
             // 
-            // label5
+            // lblMaxSpeed
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(232, 80);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(87, 16);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "100 (вправо)";
+            this.lblMaxSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblMaxSpeed.AutoSize = true;
+            this.lblMaxSpeed.Location = new System.Drawing.Point(232, 80);
+            this.lblMaxSpeed.Name = "lblMaxSpeed";
+            this.lblMaxSpeed.Size = new System.Drawing.Size(87, 16);
+            this.lblMaxSpeed.TabIndex = 14;
+            this.lblMaxSpeed.Text = "100 (вправо)";
             // 
             // boxSkyBrush
             // 
             this.boxSkyBrush.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.boxSkyBrush.Controls.Add(this.radioButton2);
-            this.boxSkyBrush.Controls.Add(this.radioButton1);
+            this.boxSkyBrush.Controls.Add(this.radioCustomBrush);
+            this.boxSkyBrush.Controls.Add(this.radioHatchBrush);
             this.boxSkyBrush.Location = new System.Drawing.Point(967, 13);
             this.boxSkyBrush.Name = "boxSkyBrush";
             this.boxSkyBrush.Size = new System.Drawing.Size(183, 149);
@@ -309,62 +309,62 @@ namespace MyLittleWorld
             this.boxSkyBrush.TabStop = false;
             this.boxSkyBrush.Text = "Небо";
             // 
-            // radioButton2
+            // radioCustomBrush
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(6, 65);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(100, 20);
-            this.radioButton2.TabIndex = 5;
-            this.radioButton2.Text = "Красивое...";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.radioCustomBrush.AutoSize = true;
+            this.radioCustomBrush.Location = new System.Drawing.Point(6, 65);
+            this.radioCustomBrush.Name = "radioCustomBrush";
+            this.radioCustomBrush.Size = new System.Drawing.Size(100, 20);
+            this.radioCustomBrush.TabIndex = 5;
+            this.radioCustomBrush.Text = "Красивое...";
+            this.radioCustomBrush.UseVisualStyleBackColor = true;
+            this.radioCustomBrush.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
-            // radioButton1
+            // radioHatchBrush
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 38);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(99, 20);
-            this.radioButton1.TabIndex = 4;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Штриховка";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.radioHatchBrush.AutoSize = true;
+            this.radioHatchBrush.Checked = true;
+            this.radioHatchBrush.Location = new System.Drawing.Point(6, 38);
+            this.radioHatchBrush.Name = "radioHatchBrush";
+            this.radioHatchBrush.Size = new System.Drawing.Size(99, 20);
+            this.radioHatchBrush.TabIndex = 4;
+            this.radioHatchBrush.TabStop = true;
+            this.radioHatchBrush.Text = "Штриховка";
+            this.radioHatchBrush.UseVisualStyleBackColor = true;
+            this.radioHatchBrush.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // label7
+            // lblNullSpeed
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(159, 80);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(14, 16);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "0";
+            this.lblNullSpeed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblNullSpeed.AutoSize = true;
+            this.lblNullSpeed.Location = new System.Drawing.Point(159, 80);
+            this.lblNullSpeed.Name = "lblNullSpeed";
+            this.lblNullSpeed.Size = new System.Drawing.Size(14, 16);
+            this.lblNullSpeed.TabIndex = 17;
+            this.lblNullSpeed.Text = "0";
             // 
-            // buttonDeleteMode
+            // btnDeleteMode
             // 
-            this.buttonDeleteMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDeleteMode.Location = new System.Drawing.Point(967, 168);
-            this.buttonDeleteMode.Name = "buttonDeleteMode";
-            this.buttonDeleteMode.Size = new System.Drawing.Size(183, 43);
-            this.buttonDeleteMode.TabIndex = 18;
-            this.buttonDeleteMode.Text = "Режим удаления";
-            this.buttonDeleteMode.UseVisualStyleBackColor = true;
-            this.buttonDeleteMode.Click += new System.EventHandler(this.buttonDeleteMode_Click);
+            this.btnDeleteMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDeleteMode.Location = new System.Drawing.Point(967, 168);
+            this.btnDeleteMode.Name = "btnDeleteMode";
+            this.btnDeleteMode.Size = new System.Drawing.Size(183, 69);
+            this.btnDeleteMode.TabIndex = 18;
+            this.btnDeleteMode.Text = "Режим удаления";
+            this.btnDeleteMode.UseVisualStyleBackColor = true;
+            this.btnDeleteMode.Click += new System.EventHandler(this.buttonDeleteMode_Click);
             // 
-            // buttonBuildMode
+            // btnBuildMode
             // 
-            this.buttonBuildMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonBuildMode.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonBuildMode.Location = new System.Drawing.Point(967, 217);
-            this.buttonBuildMode.Name = "buttonBuildMode";
-            this.buttonBuildMode.Size = new System.Drawing.Size(183, 43);
-            this.buttonBuildMode.TabIndex = 19;
-            this.buttonBuildMode.Text = "Режим строительства";
-            this.buttonBuildMode.UseVisualStyleBackColor = false;
-            this.buttonBuildMode.Click += new System.EventHandler(this.buttonBuildMode_Click);
+            this.btnBuildMode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBuildMode.BackColor = System.Drawing.Color.LightGreen;
+            this.btnBuildMode.Location = new System.Drawing.Point(967, 237);
+            this.btnBuildMode.Name = "btnBuildMode";
+            this.btnBuildMode.Size = new System.Drawing.Size(183, 69);
+            this.btnBuildMode.TabIndex = 19;
+            this.btnBuildMode.Text = "Режим строительства";
+            this.btnBuildMode.UseVisualStyleBackColor = false;
+            this.btnBuildMode.Click += new System.EventHandler(this.buttonBuildMode_Click);
             // 
             // btnColor2
             // 
@@ -381,9 +381,9 @@ namespace MyLittleWorld
             // 
             this.boxSpeedControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.boxSpeedControl.Controls.Add(this.trackBarSpeed);
-            this.boxSpeedControl.Controls.Add(this.label4);
-            this.boxSpeedControl.Controls.Add(this.label5);
-            this.boxSpeedControl.Controls.Add(this.label7);
+            this.boxSpeedControl.Controls.Add(this.lblMinSpeed);
+            this.boxSpeedControl.Controls.Add(this.lblMaxSpeed);
+            this.boxSpeedControl.Controls.Add(this.lblNullSpeed);
             this.boxSpeedControl.Location = new System.Drawing.Point(760, 579);
             this.boxSpeedControl.Name = "boxSpeedControl";
             this.boxSpeedControl.Size = new System.Drawing.Size(325, 110);
@@ -394,9 +394,9 @@ namespace MyLittleWorld
             // boxRadiusControl
             // 
             this.boxRadiusControl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.boxRadiusControl.Controls.Add(this.trackBar1);
-            this.boxRadiusControl.Controls.Add(this.label1);
-            this.boxRadiusControl.Controls.Add(this.label2);
+            this.boxRadiusControl.Controls.Add(this.trackBarRadius);
+            this.boxRadiusControl.Controls.Add(this.lblMinRadius);
+            this.boxRadiusControl.Controls.Add(this.lblMaxRadius);
             this.boxRadiusControl.Location = new System.Drawing.Point(761, 452);
             this.boxRadiusControl.Name = "boxRadiusControl";
             this.boxRadiusControl.Size = new System.Drawing.Size(389, 100);
@@ -424,24 +424,24 @@ namespace MyLittleWorld
             this.Controls.Add(this.boxSkyColor);
             this.Controls.Add(this.boxRadiusControl);
             this.Controls.Add(this.boxSpeedControl);
-            this.Controls.Add(this.buttonBuildMode);
-            this.Controls.Add(this.buttonDeleteMode);
+            this.Controls.Add(this.btnBuildMode);
+            this.Controls.Add(this.btnDeleteMode);
             this.Controls.Add(this.boxSkyBrush);
             this.Controls.Add(this.btnStopRotation);
             this.Controls.Add(this.btnStartRotation);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.boxBuildObjects);
             this.Controls.Add(this.boxBuildMode);
-            this.Controls.Add(this.pictureBox);
+            this.Controls.Add(this.planetSystemPictureBox);
             this.MinimumSize = new System.Drawing.Size(930, 704);
             this.Name = "MainForm";
             this.Text = "My Little World";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.planetSystemPictureBox)).EndInit();
             this.boxBuildMode.ResumeLayout(false);
             this.boxBuildMode.PerformLayout();
             this.boxBuildObjects.ResumeLayout(false);
             this.boxBuildObjects.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarRadius)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarSpeed)).EndInit();
             this.boxSkyBrush.ResumeLayout(false);
             this.boxSkyBrush.PerformLayout();
@@ -456,7 +456,7 @@ namespace MyLittleWorld
 
         #endregion
 
-        private PictureBox pictureBox;
+        private PictureBox planetSystemPictureBox;
         private GroupBox boxBuildMode;
         private RadioButton radioMountains;
         private RadioButton radioObelisk;
@@ -469,20 +469,20 @@ namespace MyLittleWorld
         private Label lblHouseCount;
         private Button btnColor1;
         private Button btnClear;
-        private TrackBar trackBar1;
-        private Label label1;
-        private Label label2;
+        private TrackBar trackBarRadius;
+        private Label lblMinRadius;
+        private Label lblMaxRadius;
         private Button btnStartRotation;
         private Button btnStopRotation;
         private TrackBar trackBarSpeed;
-        private Label label4;
-        private Label label5;
+        private Label lblMinSpeed;
+        private Label lblMaxSpeed;
         private GroupBox boxSkyBrush;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
-        private Label label7;
-        private Button buttonDeleteMode;
-        private Button buttonBuildMode;
+        private RadioButton radioCustomBrush;
+        private RadioButton radioHatchBrush;
+        private Label lblNullSpeed;
+        private Button btnDeleteMode;
+        private Button btnBuildMode;
         private Button btnColor2;
         private GroupBox boxSpeedControl;
         private GroupBox boxRadiusControl;

@@ -70,7 +70,7 @@ namespace MyLittleWorld
                               "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            planet = new Planet(pictureBox.Width / 2, pictureBox.Height / 2, Math.Min(pictureBox.Width, pictureBox.Height) / 2 - 100);
+            planet = new Planet(planetSystemPictureBox.Width / 2, planetSystemPictureBox.Height / 2, Math.Min(planetSystemPictureBox.Width, planetSystemPictureBox.Height) / 2 - 100);
 
             soundManager = new SoundManager();
             soundManager.LoadSound(typeof(House), "C:\\Users\\User\\source\\repos\\MyLittleWorld\\MyLittleWorld\\Resources\\h.wav");
@@ -148,11 +148,11 @@ namespace MyLittleWorld
             Graphics g = e.Graphics;
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
-            skyRect = new Rectangle(0, 0, pictureBox.Width, pictureBox.Height);
+            skyRect = new Rectangle(0, 0, planetSystemPictureBox.Width, planetSystemPictureBox.Height);
 
             Brush skyBrush;
 
-            if (radioButton1.Checked) // Если выбран паттерн
+            if (radioHatchBrush.Checked) // Если выбран паттерн
             {
                 skyBrush = CreateHatchSkyBrush(skyColor1, skyColor2);
             }
@@ -188,7 +188,7 @@ namespace MyLittleWorld
                     soundManager.PlaySound(currentObjectType);
 
                     UpdateCounts();
-                    pictureBox.Invalidate();
+                    planetSystemPictureBox.Invalidate();
                 }
             }
             else
@@ -198,7 +198,7 @@ namespace MyLittleWorld
                 {
                     objectCounts[deleteType]--;
                     UpdateCounts();
-                    pictureBox.Invalidate();
+                    planetSystemPictureBox.Invalidate();
                 }
             }
 
@@ -212,7 +212,7 @@ namespace MyLittleWorld
             {
                 PointF surfacePoint = planet.AdjustPositionToSurface(e.Location, planetRotationAngle);
             }
-            pictureBox.Invalidate();
+            planetSystemPictureBox.Invalidate();
         }
 
         private void UpdateCounts()
@@ -230,7 +230,7 @@ namespace MyLittleWorld
             Cursor mycursor = new Cursor(Cursor.Current.Handle);
             IntPtr colorcursorhandle = LoadCursorFromFile(path);
             mycursor.GetType().InvokeMember("handle", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetField, null, mycursor, new object[] { colorcursorhandle });
-            pictureBox.Cursor = mycursor;
+            planetSystemPictureBox.Cursor = mycursor;
         }
 
         private void radioHouse_CheckedChanged(object sender, EventArgs e)
@@ -278,7 +278,7 @@ namespace MyLittleWorld
                 skyColor1 = colorDialog.Color;
                 btnColor1.BackColor = skyColor1;
                 btnColor1.ForeColor = Color.FromArgb(255 - skyColor1.R, 255 - skyColor1.G, 255 - skyColor1.B);
-                pictureBox.Invalidate();
+                planetSystemPictureBox.Invalidate();
             }
         }
 
@@ -290,7 +290,7 @@ namespace MyLittleWorld
                 skyColor2 = colorDialog.Color;
                 btnColor2.BackColor = skyColor2;
                 btnColor2.ForeColor = Color.FromArgb(255 - skyColor2.R, 255 - skyColor2.G, 255 - skyColor2.B);
-                pictureBox.Invalidate();
+                planetSystemPictureBox.Invalidate();
             }
         }
 
@@ -304,19 +304,19 @@ namespace MyLittleWorld
             objectCounts[typeof(Obelisk)] = 0;
             objectCounts[typeof(Mountains)] = 0;
             UpdateCounts();
-            pictureBox.Invalidate();
+            planetSystemPictureBox.Invalidate();
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            planet.Radius = trackBar1.Value;
+            planet.Radius = trackBarRadius.Value;
             planet.ClearObjects();
             objectCounts[typeof(House)] = 0;
             objectCounts[typeof(Fir)] = 0;
             objectCounts[typeof(Obelisk)] = 0;
             objectCounts[typeof(Mountains)] = 0;
             UpdateCounts();
-            pictureBox.Invalidate();
+            planetSystemPictureBox.Invalidate();
         }
 
         private void btnStartRotation_Click(object sender, EventArgs e)
@@ -344,7 +344,7 @@ namespace MyLittleWorld
                 planetRotationAngle += deltaTime * (float)(rotationSpeed * Math.PI / 180);
                 
 
-                pictureBox.Invalidate();
+                planetSystemPictureBox.Invalidate();
             }
         }
 
@@ -356,31 +356,31 @@ namespace MyLittleWorld
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             boxSkyColor.Enabled = true;
-            pictureBox.Invalidate();
+            planetSystemPictureBox.Invalidate();
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             boxSkyColor.Enabled = false;
-            pictureBox.Invalidate();
+            planetSystemPictureBox.Invalidate();
         }
 
         private void buttonDeleteMode_Click(object sender, EventArgs e)
         {
             
             isDeleteMode = true;
-            buttonBuildMode.BackColor = Color.LightGray;
-            buttonDeleteMode.BackColor = Color.IndianRed;
+            btnBuildMode.BackColor = Color.LightGray;
+            btnDeleteMode.BackColor = Color.IndianRed;
             boxBuildMode.Enabled = false;
-            pictureBox.Cursor = Cursors.No;
+            planetSystemPictureBox.Cursor = Cursors.No;
         }
 
         private void buttonBuildMode_Click(object sender, EventArgs e)
         {
             isDeleteMode = false;
-            buttonBuildMode.BackColor = Color.LightGreen;
-            buttonDeleteMode.BackColor = Color.LightGray;
-            pictureBox.Cursor = Cursors.Hand;
+            btnBuildMode.BackColor = Color.LightGreen;
+            btnDeleteMode.BackColor = Color.LightGray;
+            planetSystemPictureBox.Cursor = Cursors.Hand;
             boxBuildMode.Enabled = true;
             if (radioHouse.Checked)
             {
