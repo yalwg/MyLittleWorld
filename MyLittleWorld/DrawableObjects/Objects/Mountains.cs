@@ -17,11 +17,11 @@ namespace MyLittleWorld
             float height = 40;
 
             PointF[] mountains = new PointF[5];
-            mountains[0] = new PointF(Position.X - width / 2, Position.Y);
+            mountains[0] = new PointF(Position.X - width / 2, Position.Y + 1);
             mountains[1] = new PointF(Position.X - width / 4, Position.Y - height);
             mountains[2] = new PointF(Position.X, Position.Y - height * 0.8f);
             mountains[3] = new PointF(Position.X + width / 4, Position.Y - height * 2);
-            mountains[4] = new PointF(Position.X + width / 2, Position.Y);
+            mountains[4] = new PointF(Position.X + width / 2, Position.Y + 1);
 
             PointUtils.RotatePoints(Position, mountains, angle);
 
