@@ -11,17 +11,19 @@ namespace MyLittleWorld
 {
     public partial class MainForm : Form
     {
+        private SoundManager soundManager;
+
         private Planet planet;
         private Bitmap planetTexture;
-        private SoundManager soundManager;
+       
+        private Rectangle skyRect;
+        private Color skyColor1 = Color.LightBlue;
+        private Color skyColor2 = Color.White;
+
         private Type currentObjectType = typeof(House);
 
         private Dictionary<Type, int> objectCounts = new Dictionary<Type, int>();
 
-        private Color skyColor1 = Color.LightBlue;
-        private Color skyColor2 = Color.White;
-
-        private Rectangle skyRect;
         private Timer timerRotation;
         private float planetRotationAngle = 0;
         private float rotationSpeed = 10; // градусов в кадр
