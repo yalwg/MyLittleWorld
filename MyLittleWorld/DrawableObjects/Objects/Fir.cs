@@ -19,8 +19,8 @@ namespace MyLittleWorld
         public override void Draw(Graphics g)
         {
             float angle = GetAngle();
-            float width = 30;  // Ширина основания ели
-            float height = 80; // Общая высота ели
+            float width = 19;  // Ширина основания ели
+            float height = 50; // Общая высота ели
 
             // Создаем ярусы ели 
             PointF[] bottomTier = CreateTier(Position, width * 0.9f, height * 0.4f, 6);

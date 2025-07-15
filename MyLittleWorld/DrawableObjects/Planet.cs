@@ -164,5 +164,42 @@ namespace MyLittleWorld
             }
             return null;
         }
+
+        public void ChangeCenter(int CenterX, int CenterY)
+        {
+            float dx = Center.X - CenterX;
+            float dy = Center.Y - CenterY;
+            Center = new Point(CenterX, CenterY);
+            for (int i = objects.Count - 1; i >= 0; i--)
+            {
+                PointF newPos = new PointF(objects[i].Position.X - dx, objects[i].Position.Y - dy);
+                objects[i].Position = newPos;
+                objects[i].PlanetCenter = Center;
+            }
+        }
+
+        public void ChangeRadius(int newRadius)
+        {
+            float scaleFactor = (float)newRadius / Radius; // Коэффициент масштабирования
+
+            for (int i = objects.Count - 1; i >= 0; i--)
+            {
+                PointF oldPos = objects[i].Position;
+
+                // Смещаем координаты относительно центра
+                float relativeX = oldPos.X - Center.X;
+                float relativeY = oldPos.Y - Center.Y;
+
+                // Масштабируем
+                PointF newPos = new PointF(
+                    Center.X + relativeX * scaleFactor,
+                    Center.Y + relativeY * scaleFactor
+                );
+
+                objects[i].Position = newPos;
+            }
+
+            Radius = newRadius; // Обновляем радиус в конце
+        }
     }
 }

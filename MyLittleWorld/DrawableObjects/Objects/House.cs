@@ -15,8 +15,8 @@ namespace MyLittleWorld
         public override void Draw(Graphics g)
         {
             float angle = GetAngle();
-            float width = 25;
-            float height = 23;
+            float width = 20;
+            float height = 17;
 
             PointF[] foundation = new PointF[]
             {

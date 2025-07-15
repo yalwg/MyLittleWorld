@@ -215,8 +215,8 @@ namespace MyLittleWorld
             // 
             this.trackBarRadius.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.trackBarRadius.Location = new System.Drawing.Point(6, 21);
-            this.trackBarRadius.Maximum = 250;
-            this.trackBarRadius.Minimum = 10;
+            this.trackBarRadius.Maximum = 300;
+            this.trackBarRadius.Minimum = 30;
             this.trackBarRadius.Name = "trackBarRadius";
             this.trackBarRadius.Size = new System.Drawing.Size(377, 56);
             this.trackBarRadius.TabIndex = 0;
@@ -231,7 +231,7 @@ namespace MyLittleWorld
             this.lblMinRadius.Name = "lblMinRadius";
             this.lblMinRadius.Size = new System.Drawing.Size(21, 16);
             this.lblMinRadius.TabIndex = 7;
-            this.lblMinRadius.Text = "10";
+            this.lblMinRadius.Text = "30";
             // 
             // lblMaxRadius
             // 
@@ -241,7 +241,7 @@ namespace MyLittleWorld
             this.lblMaxRadius.Name = "lblMaxRadius";
             this.lblMaxRadius.Size = new System.Drawing.Size(28, 16);
             this.lblMaxRadius.TabIndex = 8;
-            this.lblMaxRadius.Text = "250";
+            this.lblMaxRadius.Text = "300";
             // 
             // btnStartRotation
             // 

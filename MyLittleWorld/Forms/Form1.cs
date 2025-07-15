@@ -41,6 +41,7 @@ namespace MyLittleWorld
             timerRotation = new Timer();
             timerRotation.Interval = 16; 
             timerRotation.Tick += timerRotation_Tick;
+            this.Resize += MainForm_Resize;
 
             btnColor1.ForeColor = Color.FromArgb(255 - skyColor1.R, 255 - skyColor1.G, 255 - skyColor1.B);
             btnColor1.BackColor = skyColor1;
@@ -309,13 +310,7 @@ namespace MyLittleWorld
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            planet.Radius = trackBarRadius.Value;
-            planet.ClearObjects();
-            objectCounts[typeof(House)] = 0;
-            objectCounts[typeof(Fir)] = 0;
-            objectCounts[typeof(Obelisk)] = 0;
-            objectCounts[typeof(Mountains)] = 0;
-            UpdateCounts();
+            planet.ChangeRadius(trackBarRadius.Value);
             planetSystemPictureBox.Invalidate();
         }
 
@@ -373,6 +368,12 @@ namespace MyLittleWorld
             btnDeleteMode.BackColor = Color.IndianRed;
             boxBuildMode.Enabled = false;
             planetSystemPictureBox.Cursor = Cursors.No;
+        }
+
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            planet.ChangeCenter(planetSystemPictureBox.Width / 2, planetSystemPictureBox.Height / 2);
+            planetSystemPictureBox.Invalidate();
         }
 
         private void buttonBuildMode_Click(object sender, EventArgs e)

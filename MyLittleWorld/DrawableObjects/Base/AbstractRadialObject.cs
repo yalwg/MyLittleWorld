@@ -6,7 +6,7 @@ namespace MyLittleWorld
     public abstract class AbstractRadialObject
     {
         public PointF Position { get; set; }
-        public Point PlanetCenter { get; }
+        public Point PlanetCenter { get; set; }
         public int PlanetRadius { get; set; }
         public AbstractRadialObject(PointF position, Point planetCenter, int planetRadius)
         {

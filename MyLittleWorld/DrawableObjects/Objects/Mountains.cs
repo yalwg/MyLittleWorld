@@ -13,8 +13,8 @@ namespace MyLittleWorld
         public override void Draw(Graphics g)
         {
             float angle = GetAngle();
-            float width = 40;
-            float height = 40;
+            float width = 30;
+            float height = 30;
 
             PointF[] mountains = new PointF[5];
             mountains[0] = new PointF(Position.X - width / 2, Position.Y + 1);

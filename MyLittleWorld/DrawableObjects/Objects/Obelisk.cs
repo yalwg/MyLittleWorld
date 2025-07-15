@@ -17,8 +17,8 @@ namespace MyLittleWorld
 
 
             float angle = GetAngle();
-            float width = 15;
-            float height = 45;
+            float width = 13;
+            float height = 40;
 
             // Размеры компонентов
             float baseHeight = height * 0.2f;
