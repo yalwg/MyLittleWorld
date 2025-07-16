@@ -6,7 +6,7 @@ namespace MyLittleWorld
 {
     public class House : AbstractRadialObject
     {
-        public House(PointF position, Point planetCenter, int planetRadius)
+        public House(PointF position, PointF planetCenter, int planetRadius)
             : base(position, planetCenter, planetRadius)
         {
             ValidatePosition();

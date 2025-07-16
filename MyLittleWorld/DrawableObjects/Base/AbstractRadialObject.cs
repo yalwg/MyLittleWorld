@@ -1,14 +1,15 @@
-﻿using System;
+﻿using MyLittleWorld.DrawableObjects.Base;
+using System;
 using System.Drawing;
 
 namespace MyLittleWorld
 {
-    public abstract class AbstractRadialObject
+    public abstract class AbstractRadialObject :IDrawableRadial
     {
         public PointF Position { get; set; }
-        public Point PlanetCenter { get; set; }
+        public PointF PlanetCenter { get; set; }
         public int PlanetRadius { get; set; }
-        public AbstractRadialObject(PointF position, Point planetCenter, int planetRadius)
+        public AbstractRadialObject(PointF position, PointF planetCenter, int planetRadius)
         {
             Position = position;
             PlanetCenter = planetCenter;

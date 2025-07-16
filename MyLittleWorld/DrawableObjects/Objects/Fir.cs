@@ -10,7 +10,7 @@ namespace MyLittleWorld
 {
     public class Fir : AbstractRadialObject
     {
-        public Fir(PointF position, Point planetCenter, int planetRadius)
+        public Fir(PointF position, PointF planetCenter, int planetRadius)
             : base(position, planetCenter, planetRadius)
         {
             ValidatePosition();

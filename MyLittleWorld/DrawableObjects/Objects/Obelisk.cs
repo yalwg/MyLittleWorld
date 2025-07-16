@@ -6,7 +6,7 @@ namespace MyLittleWorld
 {
     public class Obelisk : AbstractRadialObject
     {
-        public Obelisk(PointF position, Point planetCenter, int planetRadius)
+        public Obelisk(PointF position, PointF planetCenter, int planetRadius)
             : base(position, planetCenter, planetRadius)
         {
             ValidatePosition();

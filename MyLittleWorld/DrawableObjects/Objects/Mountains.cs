@@ -5,7 +5,7 @@ namespace MyLittleWorld
 {
     public class Mountains : AbstractRadialObject
     {
-        public Mountains(PointF position, Point planetCenter, int planetRadius)
+        public Mountains(PointF position, PointF planetCenter, int planetRadius)
             : base(position, planetCenter, planetRadius) {
             ValidatePosition();
         }

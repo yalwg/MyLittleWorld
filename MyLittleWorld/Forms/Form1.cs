@@ -73,7 +73,7 @@ namespace MyLittleWorld
                               "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            planet = new Planet(planetSystemPictureBox.Width / 2, planetSystemPictureBox.Height / 2, Math.Min(planetSystemPictureBox.Width, planetSystemPictureBox.Height) / 2 - 100);
+            planet = new Planet(planetSystemPictureBox.Width / 2, planetSystemPictureBox.Height / 2, Math.Min(planetSystemPictureBox.Width, planetSystemPictureBox.Height) / 2 - 100, planetTexture);
 
             soundManager = new SoundManager();
             soundManager.LoadSound(typeof(House), "C:\\Users\\User\\source\\repos\\MyLittleWorld\\MyLittleWorld\\Resources\\h.wav");
@@ -86,10 +86,8 @@ namespace MyLittleWorld
             objectCounts[typeof(Obelisk)] = 0;
             objectCounts[typeof(Mountains)] = 0;
 
-            // Set form icon
             this.Icon = new Icon("C:\\Users\\User\\source\\repos\\MyLittleWorld\\MyLittleWorld\\Resources\\earth.ico");
 
-            // Set initial selection
             radioHouse.Checked = true;
 
             UpdateCounts();
@@ -171,20 +169,22 @@ namespace MyLittleWorld
             }
 
             // Рисуем планету
-            planet.Draw(g, planetTexture, planetRotationAngle);
+            planet.rotationAngle = planetRotationAngle;
+            planet.Draw(g);
         }
 
         private void pictureBox_MouseClick(object sender, MouseEventArgs e)
         {
-            PointF surfacePoint = planet.AdjustPositionToSurface(e.Location, planetRotationAngle);
+            planet.rotationAngle = planetRotationAngle;
+            PointF surfacePoint = planet.AdjustPositionToSurface(e.Location);
             if (!isDeleteMode)
             {
                 // Корректируем позицию на поверхность планеты
 
-                if (planet.IsPointOnPlanet(surfacePoint))
+                if (planet.IsPointOnObject(surfacePoint))
                 {
                     AbstractRadialObject newObject = DrawableObjectsStaticFactory.CreateObject(
-                        currentObjectType, surfacePoint, planet.Center, planet.Radius);
+                        currentObjectType, surfacePoint, planet.PlanetCenter, planet.Radius);
 
                     planet.AddObject(newObject);
                     objectCounts[currentObjectType]++;
@@ -211,9 +211,10 @@ namespace MyLittleWorld
 
         private void pictureBox_MouseMove(object sender, MouseEventArgs e)
         {
-            if (planet.IsPointOnPlanet(e.Location))
+            if (planet.IsPointOnObject(e.Location))
             {
-                PointF surfacePoint = planet.AdjustPositionToSurface(e.Location, planetRotationAngle);
+                planet.rotationAngle = planetRotationAngle;
+                PointF surfacePoint = planet.AdjustPositionToSurface(e.Location);
             }
             planetSystemPictureBox.Invalidate();
         }
@@ -230,10 +231,10 @@ namespace MyLittleWorld
         public static extern IntPtr LoadCursorFromFile(string filename);
         public void SetPictureBoxCursor(string path)
         {
-            Cursor mycursor = new Cursor(Cursor.Current.Handle);
-            IntPtr colorcursorhandle = LoadCursorFromFile(path);
-            mycursor.GetType().InvokeMember("handle", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetField, null, mycursor, new object[] { colorcursorhandle });
-            planetSystemPictureBox.Cursor = mycursor;
+            Cursor myCursor = new Cursor(Cursor.Current.Handle);
+            IntPtr colorCursorHandle = LoadCursorFromFile(path);
+            myCursor.GetType().InvokeMember("handle", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetField, null, myCursor, new object[] { colorCursorHandle });
+            planetSystemPictureBox.Cursor = myCursor;
         }
 
         private void radioHouse_CheckedChanged(object sender, EventArgs e)
@@ -352,14 +353,20 @@ namespace MyLittleWorld
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            boxSkyColor.Enabled = true;
-            planetSystemPictureBox.Invalidate();
+            if (radioHatchBrush.Checked)
+            {
+                boxSkyColor.Enabled = true;
+                planetSystemPictureBox.Invalidate();
+            }
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            boxSkyColor.Enabled = false;
-            planetSystemPictureBox.Invalidate();
+            if (radioCustomBrush.Checked)
+            {
+                boxSkyColor.Enabled = false;
+                planetSystemPictureBox.Invalidate();
+            }
         }
 
         private void buttonDeleteMode_Click(object sender, EventArgs e)
