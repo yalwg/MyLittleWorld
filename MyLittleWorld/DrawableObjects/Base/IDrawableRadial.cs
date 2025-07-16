@@ -11,5 +11,7 @@ namespace MyLittleWorld.DrawableObjects.Base
     {
         PointF Position { get; set; }
         PointF PlanetCenter { get; set; }
+
+        float GetAngle();
     }
 }

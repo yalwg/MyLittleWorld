@@ -176,7 +176,7 @@ namespace MyLittleWorld
         private void pictureBox_MouseClick(object sender, MouseEventArgs e)
         {
             planet.rotationAngle = planetRotationAngle;
-            PointF surfacePoint = planet.AdjustPositionToSurface(e.Location);
+            PointF surfacePoint = PointUtils.AdjustPositionToSurfaceInRotation(planet.PlanetCenter,e.Location,planet.Radius,planetRotationAngle);
             if (!isDeleteMode)
             {
                 // Корректируем позицию на поверхность планеты
@@ -214,7 +214,7 @@ namespace MyLittleWorld
             if (planet.IsPointOnObject(e.Location))
             {
                 planet.rotationAngle = planetRotationAngle;
-                PointF surfacePoint = planet.AdjustPositionToSurface(e.Location);
+                PointF surfacePoint = PointUtils.AdjustPositionToSurfaceInRotation(planet.PlanetCenter, e.Location, planet.Radius, planetRotationAngle);
             }
             planetSystemPictureBox.Invalidate();
         }

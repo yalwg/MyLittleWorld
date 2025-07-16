@@ -72,6 +72,9 @@ namespace MyLittleWorld
             g.Clip = oldRegion;
 
             // Рисуем контур планеты
+
+
+
             using (Pen outlinePen = new Pen(Color.Black, 0.1f))
             {
                 g.DrawEllipse(outlinePen,
@@ -106,30 +109,6 @@ namespace MyLittleWorld
             double distance = Math.Sqrt(Math.Pow(point.X - PlanetCenter.X, 2) + Math.Pow(point.Y - PlanetCenter.Y, 2));
             // Проверяем, что точка находится точно на границе (с небольшим допуском)
             return Math.Abs(distance - Radius) <= 3; // 3 пикселя допуск
-        }
-        public PointF AdjustPositionToSurface(PointF point)
-        {
-            float dx = point.X - PlanetCenter.X;
-            float dy = point.Y - PlanetCenter.Y;
-            float distance = (float)(Math.Sqrt(dx * dx + dy * dy));
-
-            float angle = (float)Math.Atan2(point.Y - PlanetCenter.Y, point.X - PlanetCenter.X);
-            float new_angle = angle - rotationAngle;
-            PointF new_point = new PointF(PlanetCenter.X + distance * (float)Math.Cos(new_angle), PlanetCenter.Y + distance * (float)Math.Sin(new_angle));
-            // Вектор от центра к точке
-
-
-            // Длина вектора
-            double _dx = new_point.X - PlanetCenter.X;
-            double _dy = new_point.Y - PlanetCenter.Y;
-            double _distance = Math.Sqrt(_dx * _dx + _dy * _dy);
-
-            // Нормализуем вектор и умножаем на радиус
-            double scale = Radius / _distance;
-            return new PointF(
-                (int)(PlanetCenter.X + _dx * scale),
-                (int)(PlanetCenter.Y + _dy * scale)
-            );
         }
 
 
@@ -190,19 +169,7 @@ namespace MyLittleWorld
 
             for (int i = objects.Count - 1; i >= 0; i--)
             {
-                PointF oldPos = objects[i].Position;
-
-                // Смещаем координаты относительно центра
-                float dx = oldPos.X - PlanetCenter.X;
-                float dy = oldPos.Y - PlanetCenter.Y;
-
-                // Масштабируем
-                PointF newPos = new PointF(
-                    PlanetCenter.X + dx * scaleFactor,
-                    PlanetCenter.Y + dy * scaleFactor
-                );
-
-                objects[i].Position = newPos;
+                objects[i].Position = PointUtils.AdjustPositionToSurface(PlanetCenter, objects[i].Position, scaleFactor);
             }
 
             Radius = newRadius; // Обновляем радиус в конце

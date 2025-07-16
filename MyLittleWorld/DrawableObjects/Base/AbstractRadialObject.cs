@@ -18,7 +18,7 @@ namespace MyLittleWorld
 
         public abstract void Draw(Graphics g);
 
-        protected float GetAngle()
+        public float GetAngle()
         {
             float dx = Position.X - PlanetCenter.X;
             float dy = Position.Y - PlanetCenter.Y;
@@ -46,6 +46,8 @@ namespace MyLittleWorld
 
             return distance < 30;
         }
+
+        
 
     }
 }
