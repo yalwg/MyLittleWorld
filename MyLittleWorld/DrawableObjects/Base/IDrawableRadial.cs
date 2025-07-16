@@ -11,6 +11,5 @@ namespace MyLittleWorld.DrawableObjects.Base
     {
         PointF Position { get; set; }
         PointF PlanetCenter { get; set; }
-        bool IsPointOnObject(PointF point);
     }
 }

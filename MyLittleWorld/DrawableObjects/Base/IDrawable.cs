@@ -10,5 +10,6 @@ namespace MyLittleWorld.DrawableObjects.Base
     public interface IDrawable
     {
         void Draw(Graphics g);
+        bool IsPointOnObject(PointF point);
     }
 }
